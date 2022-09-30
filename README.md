@@ -31,5 +31,5 @@ Para a criação e o gerenciamento do banco de dados, utilizamos a ferramenta SQ
 *	Servidor Heroku
 
 # 4.	Fonte dos dados
-*	Os dados foram criados de forma aleatória por mim, utilizando a ferramenta Excel. Os dados foram inseridos no banco de dados de forma automatizada, por meio de RPA (Automação robótica de processos) desenvolvida em Python com a biblioteca Selenium (código também disponibilizado no meu repositório -> link). A empresa e os usuários do site são fictícios.
+*	Os dados foram criados de forma aleatória por mim, utilizando a ferramenta Excel. Os dados foram inseridos no banco de dados de forma automatizada, por meio de RPA (Automação robótica de processos) desenvolvida em Python com a biblioteca Selenium (código também disponibilizado no meu repositório -> https://github.com/LucasMeneses1/rpaUsersSite). A empresa e os usuários do site são fictícios.
 
