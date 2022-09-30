@@ -1,0 +1,50 @@
+<br>
+<br>
+<br>
+<div>
+    <nav class="navbar navbar-dark fixed-top navbar-expand-lg" style="background-color: #385d6f;">
+      <div class="container-fluid container">
+          <a class="navbar-brand" href="{{ url_for('home') }}"><span style="color:">Comunidade Dev</span></a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{{ url_for('home') }}"><span">Início</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('usuarios') }}"><span">Usuários</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('sobre') }}"><span">Sobre</span></a>
+            </li>
+          </ul>
+          <ul class="d-flex navbar-nav">
+
+            {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('criar_post') }}"><span>Criar Post</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('usuario', usuario_id=current_user.id) }}"><span> Perfil - {{ current_user.username }}</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('sair') }}"><span>Sair</span></a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('login') }}"><span>Login</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('login') }}"><span>Criar Conta</span></a>
+                </li>
+            {% endif %}
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+</div>
+<nav class="navbar navbar-dark fixed-bottom navbar-expand-lg justify-content-center" style="background-color: #385d6f;">
+  <div class="navbar-brand">
+      <h5 style="text-align: center">Site desenvolvido apenas para fins didáticos</h5>
+  </div>
+</nav>

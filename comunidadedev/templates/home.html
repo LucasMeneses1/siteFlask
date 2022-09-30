@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container mt-3">
+        <h1 style="">Comunidade Dev</h1>
+        <h3 style="color: gray">Ponto de encontro dos alunos da Dev Treinamentos!</h3>
+        <hr>
+        {% for post in posts %}
+            <div class="row border mt-4 p-3 meupost">
+                <div class="column col-2">
+                    <div class="image pe-2"> <img src="{{ post.autor.foto_perfil }}" class="rounded" width="200"> </div>
+                    <strong class=""><a style="color: black" href="{{ url_for('usuario', usuario_id=post.autor.id) }}">{{ post.autor.username }}</a></strong>
+                    <div class="row justify-content-center">
+                            {% for curso in post.autor.cursos.split(';') %}
+                                <button type="button" class="btn btn-secondary mt-2" disabled>
+                                    {{ curso }}
+                                </button>
+                            {% endfor %}
+                    </div>
+                </div>
+                <div class="column col-9">
+                    <h3><a style="color: black;" href="{{ url_for('exibir_post', post_id=post.id) }}">{{ post.titulo }}</a>
+                    <small class="text-muted" style="font-size: 15px">
+                        - Data de criação: {{ post.data_criacao.strftime('%d/%m/%Y') }} -
+                        {% if post.autor == current_user %}
+                            <a href="{{ url_for('editar_post', post_id=post.id) }}">Editar</a>
+                        {% endif %}
+                    </small>
+                    </h3>
+
+                    <p>{{ post.corpo }}</p>
+                    <div><a class="row justify-content-end pt-4" style="color: black;" href="{{ url_for('exibir_post', post_id=post.id) }}">comentários ({{ post.contar_comentarios() }})</a></div>
+                </div>
+            </div>
+
+        {% endfor %}
+
+    </div>
+{% endblock %}

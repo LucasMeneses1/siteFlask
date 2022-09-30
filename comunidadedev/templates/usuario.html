@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class = "container mb-4">
+        <h1>{{usuario.username}}</h1>
+            <div class="container card p-3 mt-5 d-flex justify-content-center" style="width: 500px;">
+                <div class="">
+                    <div class="d-flex align-items-center">
+                        <div class="image pe-2"> <img src="{{ usuario.foto_perfil }}" class="rounded" width="200"> </div>
+                        <div class="ml-3 w-100">
+                            <h4 class="mb-0 mt-0">{{ usuario.username }}</h4> <span>{{ usuario.email }}</span>
+                            <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                                <div class="d-flex flex-column"> <span class="articles">Posts</span> <span class="number1">{{ usuario.contar_posts() }}</span> </div>
+                                {% if 'Não Informado' in usuario.cursos %}
+                                    <div class="d-flex flex-column"> <span class="rating">Cursos</span> <span class="number3">0</span> </div>
+                                {% else %}
+                                    <div class="d-flex flex-column"> <span class="rating">Cursos</span> <span class="number3">{{ usuario.cursos.count(';') + 1 }}</span> </div>
+                                {% endif %}
+                                <div class="row justify-content-center">
+
+                    </div>
+
+                            </div>
+                            {% if current_user.id == usuario.id %}
+                                <div class="button mt-2 d-flex flex-row align-items-center">
+                                    <a href="{{ url_for('editar_perfil') }}" class="w-100"><button class="btn btn-sm btn-outline-primary w-100">Editar Perfil</button></a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    <div class="container  mt-2 d-flex justify-content-center" style="width: 200px;">
+        {% for curso in usuario.cursos.split(';') %}
+            <button type="button" class="btn btn-secondary mt-2 me-2" disabled>
+                {{ curso }}
+            </button>
+        {% endfor %}
+    </div>
+
+</div>
+
+<div class="container">
+    <h3>Posts do usuário:</h3>
+    <hr>
+</div>
+<div class="container">
+{% for post in posts %}
+            <div class="row border mt-4 p-3 meupost">
+                <div class="column col-2">
+                    <div class="image pe-2"> <img src="{{ post.autor.foto_perfil }}" class="rounded" width="200"> </div>
+                    <strong>{{ post.autor.username }}</strong>
+                    <div class="row justify-content-center">
+                            {% for curso in post.autor.cursos.split(';') %}
+                                <button type="button" class="btn btn-secondary mt-2" disabled>
+                                    {{ curso }}
+                                </button>
+                            {% endfor %}
+                    </div>
+                </div>
+                <div class="column col-9">
+                    <a style="color: black" href="{{ url_for('exibir_post', post_id=post.id) }}"><h3>{{ post.titulo }}</h3></a>
+                    <p>{{ post.corpo }}</p>
+                    <div><a style="color: black" class="row justify-content-end pt-4" href="{{ url_for('exibir_post', post_id=post.id) }}">comentários ({{ post.contar_comentarios() }})</a></div>
+                </div>
+            </div>
+
+        {% endfor %}
+{% endblock %}
+</div>
