@@ -5,10 +5,10 @@
 A ideia deste projeto foi desenvolver um site que funcionaria como um local de interação entre alunos de uma empresa de cursos fictícia. 
  #### O site permite: 
   * o cadastro de usuários, 
-  * permite que os usuários realizem postagens que serão exibidas para os outros usuários,
-  * permite que os usuários comentem os posts uns dos outros,
-  * permite acesso aos perfis dos outros usuários,
-  * permite edições de perfil.<br><br> 
+  * que os usuários realizem postagens que serão exibidas para os outros usuários,
+  * que os usuários comentem os posts uns dos outros,
+  * acesso aos perfis dos outros usuários,
+  * edições de perfil.<br><br> 
 
 Para a criação e o gerenciamento do banco de dados, utilizamos a ferramenta SQLALCHEMY integrada ao Flask. O deploy da aplicação foi realizado no servidor Heroku, acessível pelo link: https://comunidadedev.herokuapp.com/
 
